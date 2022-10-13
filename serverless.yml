@@ -1,0 +1,33 @@
+service: ikea-stock-alert
+frameworkVersion: '3'
+useDotenv: true
+provider:
+  name: aws
+  region: ${env:REGION}
+  runtime: nodejs16.x
+  iam:
+    role:
+      name: ikea-stock-alert-${sls:stage}-role
+      statements:
+        - Effect: "Allow"
+          Action:
+            - sns:Publish
+          Resource: !Ref IkeaAlertQueue
+functions:
+  check:
+    handler: src/handler.checkStock
+    environment:
+      TOPIC_ARN: !Ref IkeaAlertQueue
+    events:
+      - schedule:
+          rate: ${env:SCHEDULE}
+          inputTransformer:
+            inputTemplate: ${env:PRODUCT_LIST}
+resources:
+  Resources:
+    IkeaAlertQueue:
+      Type: AWS::SNS::Topic
+      Properties:
+        Subscription:
+          - Endpoint: ${env:QUEUE_ENDPOINT}
+            Protocol: email

@@ -1,0 +1,39 @@
+{
+  "name": "serverless-ikea-stock-alert",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/handler.js",
+  "author": {
+    "name": "Axel SHAÏTA",
+    "email": "shaita.axel@gmail.com",
+    "url": "https://www.codeheroes.fr"
+  },
+  "license": "MIT",
+  "keywords": [
+    "ikea",
+    "aws",
+    "lambda",
+    "serverless",
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arkerone/serverless-ikea-stock-alert"
+  },
+  "bugs": {
+    "url": "https://github.com/arkerone/serverless-ikea-stock-alert/issues"
+  },
+  "homepage": "https://github.com/arkerone/serverless-ikea-stock-alert#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ikea-availability-checker": "^2.0.0-alpha.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-promise": "^6.0.1"
+  }
+}
